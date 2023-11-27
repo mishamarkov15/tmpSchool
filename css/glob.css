@@ -1,0 +1,68 @@
+/* glob */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+img {
+    max-width: 100%;
+}
+
+body {
+    min-width: 1220px;
+    font-family: 'Montserrat', 'Montserrat-Alternates', sans-serif;
+    color: #2A2F36;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 1220px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.list-reset {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.btn-reset {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.bg-dark {
+    background-color: #2A2F36;
+}
+
+.blue-text {
+    color: #01929C;
+}
+
+.youtube-text {
+    color: #F43110;
+}

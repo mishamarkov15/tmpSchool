@@ -1,0 +1,136 @@
+/* header */
+
+.header-container {
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.header-logo-name {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Montserrat-Alternates-Bold', 'Montserrat-Bold', sans-serif;
+    color: #FFF;
+}
+
+.header-logo-img {
+    width: 60px;
+    height: 70px;
+    margin-right: 15px;
+}
+
+.header-logo {
+    align-items: center;
+}
+
+.header-nav {
+    align-items: center;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.header-list-item:not(:last-child) {
+    margin-right: 30px;
+}
+
+.header-btn-text {
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-image: url("../../../../media/index-page/header-light.svg");
+    padding-left: 26px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFF;
+}
+
+.header-btn-form {
+    display: flex;
+}
+
+.header-btn {
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 2px solid #EEC690;
+}
+
+/* footer */
+
+.footer {
+    padding: 120px 0;
+}
+
+.footer-logo {
+    align-items: center;
+}
+
+.footer-logo-name {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Montserrat-Alternates-Bold', 'Montserrat-Bold', sans-serif;
+    color: #FFF;
+}
+
+.footer-logo-img {
+    width: 60px;
+    height: 70px;
+    margin-right: 15px;
+}
+
+.footer-nav {
+    align-items: center;
+}
+
+.footer-list-item {
+    color: #FFF;
+    font-size: 16px;
+}
+
+.footer-list-item:not(:last-child) {
+    margin-right: 30px;
+}
+
+.footer-container {
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.footer-btn {
+    border-radius: 15px;
+    border: 2px solid #01929C;
+    padding: 24px 30px;
+    color: #FFF;
+}
+
+.footer-wrapper {
+    flex-direction: column;
+    gap: 20px;
+}
+
+.col-1-3 {
+    width: 30%;
+}
+
+.footer-header-4 {
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 16px;
+    padding: 0;
+    color: #FFF;
+}
+
+.vertical-footer-list {
+    flex-direction: column;
+    gap: 8px;
+}
+
+.middle-col {
+    text-align: center;
+}
+
+.last-col {
+    text-align: right;
+}
+
+.social-list {
+    flex-direction: row-reverse;
+    gap: 10px;
+}

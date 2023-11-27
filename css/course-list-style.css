@@ -1,0 +1,194 @@
+:root {
+    --gap: 20px;
+}
+
+/* catalog */
+
+.catalog {
+    padding-top: 40px
+}
+
+.item-wide {
+    width: 100%;
+}
+
+.item-small {
+    width: 49%;
+}
+
+.course-card {
+    background-color: #F2F7FE;
+    border-radius: 15px;
+    --padding: 20px;
+    padding: var(--padding);
+}
+
+.catalog-list {
+    flex-wrap: wrap;
+    gap: var(--gap);
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.card-wide {
+    --course-logo-size: 132px;
+    --card-top-right-margin-right: 45px;
+}
+
+.card-small {
+    --course-logo-size: 80px;
+    --card-top-right-margin-right: 35px;
+}
+
+.card-top {
+    border-bottom: 1px solid #DEE3EA;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.card-bottom {
+    gap: 20px;
+}
+
+.card-top-right {
+    width: calc(100% - var(--padding) * 2 - var(--card-top-right-margin-right) - var(--course-logo-size));
+    margin-right: auto;
+}
+
+.card-image {
+    width: var(--course-logo-size);
+    height: var(--course-logo-size);
+}
+
+.card-certificate {
+    background-color: #2A2F36;
+    background-image: url("../../../../media/courses/certificate-icon.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position-x: 10px;
+    background-size: 28px 28px;
+    border-radius: 10px;
+    padding: 11px 10px 11px 48px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Montserrat-Alternates', 'Montserrat', sans-serif;
+    color: #FFF;
+    margin-bottom: 20px;
+    width: 305px;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Montserrat-Alternates-Bold', 'Montserrat-Bold', sans-serif;
+}
+
+.card-wide {
+    --width: 50%;
+    --margin-bottom: 0;
+}
+
+.card-small {
+    --width: 100%;
+    --margin-bottom: 30px;
+    --border-bottom: 1px solid #DEE3EA;
+}
+
+.card-main-info {
+    border: 1px solid #01929C;
+    border-radius: 20px;
+    padding: 20px 27px;
+    width: var(--width);
+    align-items: center;
+    margin-bottom: var(--margin-bottom);
+}
+
+.card-main-info-list {
+    --offset: 1;
+    --gap: 30px;
+    gap: var(--gap);
+}
+
+.main-info-item {
+    gap: 15px;
+}
+
+.info-item-title, .info-item-bottom-text {
+    padding: 0;
+    margin: 0;
+}
+
+.info-item-title {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Montserrat-Alternates-Bold, Montserrat-Bold, sans-serif;
+    color: #2A2F36;
+    margin-bottom: 5px;
+}
+
+.info-item-bottom-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #B6BBC2;
+}
+
+.info-item-icon {
+    width: 44px;
+    height: 44px;
+}
+
+.card-buy-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-price {
+    gap: 30px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.month-price {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: Montserrat-Alternates-Bold, Montserrat-Bold, sans-serif;
+    color: #3E434A;
+}
+
+.full-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #B6BBC2;
+}
+
+.card-btn-form {
+    width: 100%;
+}
+
+.card-btn {
+    background-color: #EEC690;
+    border-radius: 15px;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.catalog-paginator {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.paginator-list {
+    gap: 25px;
+}
+
+.paginator-link {
+    padding: 5px 15px;
+}
+
+.link-active {
+    border: 1px solid #01929C;
+    border-radius: 5px;
+}

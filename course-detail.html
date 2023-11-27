@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'shop/css/normalize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/glob.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/fonts-styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/header-footer-style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/hero-path.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/course_detail.css' %}" type="text/css">
+
+    {% if anchor %}
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script type='text/javascript'>
+            $(document).ready(function () {
+                window.location = '#{{ anchor }}'
+            });
+            console.log('here!');
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <header class="header bg-dark">
+        <div class="container header-container flex">
+            <a class="header-logo flex" href="{% url 'shop:index' %}">
+                <img src="{% get_media_prefix %}main/logo.svg" class="header-logo-img" alt="marcus logo">
+                <div class="header-logo-name"><span class="blue-text">/</span> marcus</div>
+            </a>
+            <nav class="header-nav header-container flex">
+                <ul class="list-reset header-list flex">
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#goal" class="header-link">Цели</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#platform" class="header-link">Платформа</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#teacher" class="header-link">Преподаватель</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#features" class="header-link">Особенности</a>
+                    </li>
+                </ul>
+            </nav>
+            <form method="get" action="{% url 'shop:course-list' %}" class="header-btn-form">
+                <button class="btn btn-reset header-btn">
+                    <span class="header-btn-text">Каталог курсов</span>
+                </button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section id="hero" class="hero bg-dark">
+            <div class="container hero-container">
+                <p class="hero-path">
+                    <a class="hero-path-link" href="{% url 'shop:index' %}">Главная</a> /
+                    <a class="hero-path-link" href="{% url 'shop:course-list' %}">Каталог</a> /
+                    <a class="hero-path-link"
+                       href="{% url 'shop:course-detail'  slug=course.slug %}">{{ course.title }}</a>
+                </p>
+                <h1 class="hero-title">Каталог</h1>
+            </div>
+        </section>
+        <section id="logo-secion" class="logo-section">
+            <div class="container logo-container flex">
+                <div class="logo-descr">
+                    <h1 class="logo-header">
+                        {{ course.title }}
+                    </h1>
+                    <p class="logo-paragraph">
+                        {{ course.hero_description|safe }}
+                    </p>
+                    <a href="#buy" class="register-link">Регистрация</a>
+                </div>
+                <div class="logo-wrapper flex">
+                    <img class="logo-img" src="{% get_media_prefix %}courses/{{ course.pk }}/detail_logo.png"
+                         alt="{{ course.title }}">
+                    {% if course.special_offer_percentage > 0.0 %}
+                        <div class="special-offer flex">
+                            <img class="" src="{% get_media_prefix %}courses/sale.svg" alt="sale-icon">
+                            Действует специальное предложение -{{ course.special_offer_percentage|floatformat:0 }}%
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <section id="notes" class="notes">
+            <div class="container flex notes-container">
+                <div class="main-notes">
+                    <ul class="list-reset flex main-notes-list">
+                        {% for key, value in course.main_notes.items %}
+                            <li class="main-notes-item flex">
+                                <h4 class="main-notes-title">{{ key }}:</h4>
+                                <p class="main-notes-descr">&nbsp;{{ value }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="additional-notes">
+                    <ul class="additional-notes-list list-reset flex">
+                        {% for key, value in course.additional_notes.items %}
+                            <li class="additional-notes-item">
+                                <h4 class="additional-notes-header">{{ key }}</h4>
+                                <p class="additional-notes-descr">{{ value }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <div class="container about-container">
+                <fieldset class="about-fieldset">
+                    <legend class="about-legend"><h3 class="about-header">О курсе</h3></legend>
+                    <div class="about-content">
+                        {{ course.about_course|safe }}
+                    </div>
+                </fieldset>
+            </div>
+        </section>
+        <section id="program" class="program">
+            <div class="container program-container">
+                <h2 class="program-header">Содержание курса</h2>
+
+                <ul>
+                    {% for module in course.program.modules %}
+                        {% for key, lessons in module.items %}
+                            <button class="btn-reset accordion level-1">{{ key }}</button>
+                            <ul class="list-reset courses-list panel">
+                                {% for parts in lessons %}
+                                    {% for key_p, part in parts.items %}
+                                        <li class="courses-list-item">
+                                            {#                                            <span class=" flex level-2">{{ key_p }}</span>#}
+                                            <button class="btn-reset accordion level-1">{{ key_p }}</button>
+                                            <ul class="list-reset courses-list panel">
+                                                {% for key_l, lesson in  part.items %}
+                                                    <li class="courses-list-item">
+                                                        {{ lesson }}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <section id="bottom-icons" class="bottom-icons">
+            <div class="container bottom-icons-container">
+                <ul class="list-reset flex icons-list">
+                    <li class="bottom-icon flex">
+                        <img src="{% get_media_prefix %}courses/lessons_format.svg" alt="icon"
+                             class="bottom-icon-img">
+                        <div>
+                            <h5 class="bottom-icon-header">Формат занятий</h5>
+                            {% if course.online %}
+                                <p class="bottom-icon-descr">онлайн</p>
+                            {% else %}
+                                <p class="bottom-icon-descr">в записи</p>
+                            {% endif %}
+                        </div>
+                    </li>
+                    <li class="bottom-icon flex">
+                        <img src="{% get_media_prefix %}courses/tasks_icon.svg" alt="icon"
+                             class="bottom-icon-img">
+                        <div>
+                            <h5 class="bottom-icon-header">Практика</h5>
+                            <p class="bottom-icon-descr">задания с автоматической проверкой</p>
+                        </div>
+                    </li>
+                    <li class="bottom-icon flex">
+                        <img src="{% get_media_prefix %}courses/support_icon.svg" alt="icon"
+                             class="bottom-icon-img">
+                        <div>
+                            <h5 class="bottom-icon-header">Обратная связь</h5>
+                            <p class="bottom-icon-descr">чаты с преподавателем</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="buy" class="buy">
+            <div class="container buy-container flex">
+                <div class="buy-left">
+                    <h3 class="buy-header price-title">Стоимость курса</h3>
+                    <h3 class="buy-header course-title">{{ course.title }}</h3>
+                    <div class="price-block">
+                        {% if course.special_offer_percentage > 0 %}
+                            <div class="offer-block flex">
+                                <img class="offer-icon" src="{% get_media_prefix %}courses/sale.svg" alt="offer-icon">
+                                Действует специальное предложение -{{ course.special_offer_percentage }}%
+                            </div>
+                        {% endif %}
+                        <div class="price flex">
+                            <div class="price-with-discount">
+                                {{ course.course_with_sale|floatformat }}₽
+                            </div>
+                            <div class="price-without-discount">
+                                {{ course.month_price|floatformat }}₽
+                            </div>
+                        </div>
+                        <ul class="list-reset payment-list flex">
+                            <li class="payment-item">Ежемесячные платежи</li>
+                            <li class="payment-item">Отказаться можно в любой момент</li>
+                            <li class="payment-item">Доступ к оплаченным урокам <b>навсегда</b></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div id="application-form" class="buy-right">
+                    <h3 class="register-header">Регистрация на курс</h3>
+                    <form method="post" class="register-form flex">
+                        {% load i18n %}
+                        {% csrf_token %}
+                        <div>
+                            {% language 'ru' %}
+                                {{ form.non_field_errors }}
+                            {% endlanguage %}
+                        </div>
+                        {#                        <div>#}
+                        {#                            {% language 'ru' %}#}
+                        {#                                {{ form.username_or_email.errors }}#}
+                        {#                            {% endlanguage %}#}
+                        {#                            <label class="register-label">{{ form.username_or_email.label }}</label>{{ form.username_or_email }}#}
+                        {##}
+                        {#                            <div class="tooltip"><span class="no-account"><a#}
+                        {#                                    href="#">Нет аккаунта на нашей платформе?</a></span>#}
+                        {#                                <span class="tooltiptext">Пройдите регистрацию и вернитесь сюда</span>#}
+                        {#                            </div>#}
+                        {#                        </div>#}
+                        <div class="flex contact-way-container">
+                            <h4 class="callback-way">Укажите удобный(е) способ(ы) связи</h4>
+                            <div>
+                                {% language 'ru' %}
+                                    {{ form.client_name.errors }}
+                                {% endlanguage %}
+                                <label class="register-label">{{ form.client_name.label }}
+                                    *</label>{{ form.client_name }}
+                            </div>
+                            <div>
+                                {% language 'ru' %}
+                                    {{ form.telegram_field.errors }}
+                                {% endlanguage %}
+                                <label class="register-label">{{ form.telegram_field.label }}</label>{{ form.telegram_field }}
+                            </div>
+                            <div>
+                                {% language 'ru' %}
+                                    {{ form.whatsapp.errors }}
+                                {% endlanguage %}
+                                <label class="register-label">{{ form.whatsapp.label }}</label>{{ form.whatsapp }}
+                            </div>
+                            <div>
+                                {% language 'ru' %}
+                                    {{ form.phone_number_field.errors }}
+                                {% endlanguage %}
+                                <label class="register-label">{{ form.phone_number_field.label }}</label>{{ form.phone_number_field }}
+                            </div>
+                            <div>
+                                {% language 'ru' %}
+                                    {{ form.email_field.errors }}
+                                {% endlanguage %}
+                                <label class="register-label">{{ form.email_field.label }}
+                                    *</label>{{ form.email_field }}
+                            </div>
+                        </div>
+                        {% if show_confirmation_code_input %}
+                            <div>
+                                {% language 'ru' %}
+                                    {{ form.code.errors }}
+                                {% endlanguage %}
+                                <label class="register-label">{{ form.code.label }} *</label>{{ form.code }}
+                                <span>Код выслан Вам на почту</span>
+                            </div>
+                        {% endif %}
+                        <button class="btn-reset register-btn">Записаться</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer bg-dark">
+        <div class="container footer-container flex">
+            <a class="footer-logo flex" href="{% url 'shop:index' %}">
+                {% load static %}
+                <img src="{% get_media_prefix %}index-page/../../media/main/logo.svg" class="footer-logo-img"
+                     alt="marcus logo">
+                <div class="footer-logo-name"><span class="blue-text">/</span> marcus</div>
+            </a>
+            <nav class="footer-nav flex">
+                <ul class="list-reset flex">
+                    <li class="footer-list-item">
+                        <a href="#goal" class="footer-item-link">Цель</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#platform" class="footer-item-link">Платформа</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#teacher" class="footer-item-link">Преподаватель</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#features" class="footer-item-link">Особенности</a>
+                    </li>
+                </ul>
+            </nav>
+            <form method="get" action="{{ platform_link }}" target="_blank">
+                <button class="btn btn-reset footer-btn">
+                    Попробовать платформу
+                </button>
+            </form>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'shop/js/accordion.js' %}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% autoescape off %}
+    <h1>Ваш код подтверждения</h1>
+    <hr>
+    <p style="font-size: 36px; font-weight: 700;">
+        {{ code.code }}
+    </p>
+
+    <p>Код действителен до: {{ code.expired_at }}</p>
+
+{% endautoescape %}

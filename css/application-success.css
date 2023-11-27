@@ -1,0 +1,16 @@
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    height: 600px;
+}
+
+.hero-content {
+    font-size: 18px;
+    text-align: center;
+}
+
+.hero-link {
+    border-bottom: 1px solid #08C2CF;
+    font-weight: 700;
+}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'shop/css/normalize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/glob.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/fonts-styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/header-footer-style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/hero-path.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/application-success.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <header class="header bg-dark">
+        <div class="container header-container flex">
+            <a class="header-logo flex" href="{% url 'shop:index' %}">
+                <img src="{% get_media_prefix %}main/logo.svg" class="header-logo-img" alt="marcus logo">
+                <div class="header-logo-name"><span class="blue-text">/</span> marcus</div>
+            </a>
+            <nav class="header-nav header-container flex">
+                <ul class="list-reset header-list flex">
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#goal" class="header-link">Цели</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#platform" class="header-link">Платформа</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#teacher" class="header-link">Преподаватель</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#features" class="header-link">Особенности</a>
+                    </li>
+                </ul>
+            </nav>
+            <form method="get" action="{% url 'shop:course-list' %}" class="header-btn-form">
+                <button class="btn btn-reset header-btn">
+                    <span class="header-btn-text">Каталог курсов</span>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">Вы успешно записались на курс! Мы с Вами свяжемся в ближайшее время и Вы получите доступ <a
+                        href="http://emarcus.ru" class="hero-link">здесь</a>.</div>
+                <img src="{% get_media_prefix %}index-page/hero-marcus-head.svg">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer bg-dark">
+        <div class="container footer-container flex">
+            <a class="footer-logo flex" href="{% url 'shop:index' %}">
+                {% load static %}
+                <img src="{% get_media_prefix %}index-page/../../media/main/logo.svg" class="footer-logo-img"
+                     alt="marcus logo">
+                <div class="footer-logo-name"><span class="blue-text">/</span> marcus</div>
+            </a>
+            <nav class="footer-nav flex">
+                <ul class="list-reset flex">
+                    <li class="footer-list-item">
+                        <a href="#goal" class="footer-item-link">Цель</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#platform" class="footer-item-link">Платформа</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#teacher" class="footer-item-link">Преподаватель</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#features" class="footer-item-link">Особенности</a>
+                    </li>
+                </ul>
+            </nav>
+            <form method="get" action="{{ platform_link }}" target="_blank">
+                <button class="btn btn-reset footer-btn">
+                    Попробовать платформу
+                </button>
+            </form>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

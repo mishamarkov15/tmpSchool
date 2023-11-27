@@ -1,0 +1,508 @@
+/* logo-section */
+.logo-container {
+    padding-top: 97px;
+    margin-bottom: 97px;
+}
+
+.logo-header {
+    font-size: 48px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0 0 32px;
+}
+
+.logo-paragraph {
+    text-align: justify;
+    font-family: "Outfit", "Montserrat", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin-bottom: 53px;
+}
+
+.logo-descr {
+    width: 580px;
+    margin-right: 58px;
+}
+
+.logo-img {
+    width: 582px;
+    height: 582px;
+
+}
+
+.register-link {
+    padding: 22px 48px;
+    background-color: #08C2CF;
+    border-radius: 55px;
+    color: #101425;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    box-shadow: 0 4px 20px 0 rgba(8, 194, 207, 0.90);
+    -webkit-transition: padding 200ms ease-in-out;
+    transition: padding 200ms ease-in-out;
+}
+
+.register-link:hover {
+    padding: 28px 52px;
+}
+
+.logo-wrapper {
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-img {
+    width: 580px;
+    height: 580px;
+    margin-bottom: 20px;
+}
+
+.special-offer {
+    gap: 44px;
+    align-items: center;
+    text-align: center;
+    padding: 19px 30px;
+    border: 2px solid #08C2CF;
+    box-shadow: 0 4px 20px 0 rgba(8, 194, 207, 0.2);
+    border-radius: 55px;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 61px 61px;
+}
+
+/* notes */
+
+.notes-container {
+    flex-direction: column;
+    margin-bottom: 82px;
+}
+
+/* main-notes */
+.main-notes-list {
+    gap: 26px;
+    justify-content: center;
+}
+
+.main-notes-item {
+    flex-direction: row;
+    align-items: center;
+}
+
+.main-notes-title, .main-notes-descr {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, Montserrat, sans-serif;
+}
+
+.main-notes-title {
+    color: #01929C;
+}
+
+.main-notes {
+    border-bottom: 1px solid #EEC690;
+    padding-bottom: 39px;
+    margin-bottom: 33px;
+}
+
+.main-notes-title {
+    margin: 0;
+    padding: 0;
+}
+
+.main-notes-descr {
+    margin: 0;
+    padding: 0;
+}
+
+/* additional-notes */
+
+.additional-notes-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 33px;
+}
+
+.additional-notes-item {
+    width: 30%;
+}
+
+.additional-notes-header, .additional-notes-descr {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 1px;
+    font-feature-settings: 'ss01' on, 'salt' on;
+}
+
+.additional-notes-header {
+    color: #01929C;
+}
+
+/* about */
+
+.about-container {
+    margin-bottom: 70px;
+}
+
+.about-fieldset {
+    position: relative;
+    border-radius: 30px;
+    margin: 0;
+    padding: 45px 55px;
+    border: 2px solid #01929C;
+}
+
+.about-header {
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-weight: 700;
+}
+
+.about-legend {
+    position: absolute;
+    left: 50px;
+    top: -35px;
+    margin: 0;
+    padding: 0;
+    background-color: white;;
+}
+
+.about-content {
+    text-align: justify;
+    font-feature-settings: 'ss01' on, 'salt' on;
+    font-size: 20px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+/* program */
+
+.program-header {
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    font-weight: 700;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, Montserrat, sans-serif;
+    margin-bottom: 73px;
+}
+
+.program-container {
+    margin-bottom: 71px;
+}
+
+/* accordion */
+
+.level-1 {
+    font-size: 36px;
+}
+
+.level-2 {
+    font-size: 24px;
+}
+
+.level-3 {
+    font-size: 18px;
+}
+
+.accordion {
+    border: none;
+    border-bottom: 1px solid #01929C;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.active, .accordion:hover {
+    box-shadow: 0 4px 20px 0 rgba(8, 194, 207, 0.10);
+    background-color: rgba(8, 194, 207, 0.10);
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.courses-list-item {
+    padding: 8px 12px;
+}
+
+
+/* bottom-icons */
+
+.bottom-icons-container {
+    margin-bottom: 113px;
+}
+
+.icons-list {
+    justify-content: space-evenly;
+    gap: 31px;
+}
+
+.bottom-icon {
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-icon-img {
+    width: 92px;
+    height: 92px;
+    margin-bottom: 18px;
+}
+
+.bottom-icon-header, .bottom-icon-descr {
+    text-align: center;
+}
+
+.bottom-icon-header {
+    margin: 0;
+    padding: 0;
+    color: #08C2CF;
+    font-feature-settings: 'ss01' on, 'salt' on;
+    font-family: Montserrat, Montserrat-Alternates, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    letter-spacing: 1px;
+}
+
+.bottom-icon-descr {
+    margin: 0;
+    padding: 0;
+    font-feature-settings: 'ss01' on, 'salt' on;
+    font-family: Montserrat, Montserrat-Alternates, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 1px;
+}
+
+/* buy */
+
+.buy-container {
+    gap: 20px;
+    margin-bottom: 113px;
+    justify-content: space-evenly;
+}
+
+.buy-header {
+    margin: 0;
+    padding: 0;
+}
+
+.buy-left {
+    max-width: 50%;
+}
+
+.buy-right {
+    padding: 15px 44px;
+    border-radius: 30px;
+    border: 2px solid #08C2CF;
+    background: rgba(6, 17, 37, 0.00);
+    box-shadow: 0 4px 20px 0 rgba(8, 194, 207, 0.2);
+}
+
+.price-title, .course-title {
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.price-title {
+    color: #08C2CF;
+}
+
+.price-block {
+    padding: 19px 25px;
+    border-radius: 30px;
+    border: 2px solid #08C2CF;
+    background: rgba(6, 17, 37, 0.00);
+    box-shadow: 0 4px 20px 0 rgba(8, 194, 207, 0.2);
+}
+
+.offer-block {
+    align-items: center;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: normal;
+    margin-bottom: 25px;
+}
+
+.offer-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+}
+
+.price {
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.price-with-discount {
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: #08C2CF;
+}
+
+.price-without-discount {
+    color: #01929C;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-size: 24px;
+    text-decoration: line-through;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.payment-list {
+    flex-direction: column;
+    gap: 4px;
+    list-style: inside;
+}
+
+.register-header {
+    margin: 0 0 20px;
+    padding: 0;
+    text-align: center;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.register-btn {
+    color: #2A2F36;
+    border-radius: 55px;
+    border: 2px solid #08C2CF;
+    background-color: #08C2CF;
+    padding: 16px 22px;
+    text-align: center;
+    font-family: Montserrat-Bold, Montserrat-Alternates-Bold, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 4px 20px 0 rgba(8, 194, 207, 0.90);
+    -webkit-transition: padding 200ms ease-in-out;
+    transition: padding 200ms ease-in-out;
+}
+
+.register-btn:hover {
+    padding: 22px 28px;
+}
+
+.register-form {
+    flex-direction: column;
+    gap: 24px;
+}
+
+.no-account {
+    font-size: 12px;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom: 1px solid #08C2CF;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+
+.no-account:hover {
+    color: #01929C;
+}
+
+.register-field {
+    border: 1px solid #EEC690;
+    border-radius: 55px;
+    padding: 8px 12px;
+    display: block;
+    margin: 0;
+    width: 100%;
+}
+
+.register-label {
+    margin-bottom: 4px;
+    font-size: 18px;
+    display: block;
+}
+
+.contact-way-container {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.callback-way {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.contact-field {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.error-msg {
+    color: #FF463A;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}

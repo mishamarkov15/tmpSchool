@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'shop/css/normalize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/glob.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/fonts-styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/header-footer-style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/course-list-style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'shop/css/hero-path.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <header class="header bg-dark">
+        <div class="container header-container flex">
+            <a class="header-logo flex" href="{% url 'shop:index' %}">
+                <img src="{% get_media_prefix %}main/logo.svg" class="header-logo-img" alt="marcus logo">
+                <div class="header-logo-name"><span class="blue-text">/</span> marcus</div>
+            </a>
+            <nav class="header-nav header-container flex">
+                <ul class="list-reset header-list flex">
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#goal" class="header-link">Цели</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#platform" class="header-link">Платформа</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#teacher" class="header-link">Преподаватель</a>
+                    </li>
+                    <li class="header-list-item">
+                        <a href="{% url 'shop:index' %}#features" class="header-link">Особенности</a>
+                    </li>
+                </ul>
+            </nav>
+            <form method="get" action="{% url 'shop:course-list' %}" class="header-btn-form">
+                <button class="btn btn-reset header-btn">
+                    <span class="header-btn-text">Каталог курсов</span>
+                </button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section id="hero" class="hero bg-dark">
+            <div class="container hero-container">
+                <p class="hero-path">
+                    <a class="hero-path-link" href="{% url 'shop:index'  %}">Главная</a> /
+                    <a class="hero-path-link" href="{% url 'shop:course-list'  %}">Каталог</a>
+                </p>
+                <h1 class="hero-title">Каталог</h1>
+            </div>
+        </section>
+        {#        <section id="filter" class="filter">#}
+        {#        </section>#}
+        <section id="catalog" class="catalog">
+            <div class="container">
+                <ul class="list-reset catalog-list flex">
+                    {% for course in courses %}
+                        {% if course.card_type == 'wd' %}
+                            <li class="catalog-item item-wide">
+                                <article class="course-card card-wide">
+                                    <div class="card-top flex">
+                                        <div class="card-top-right">
+                                            {% if course.certificate %}
+                                                <div class="card-certificate">
+                                                    Сертификат по окончании
+                                                </div>
+                                            {% else %}
+                                                <div class="card-certificate">
+                                                    Без сертификата
+                                                </div>
+                                            {% endif %}
+                                            <h2 class="card-title">
+                                                {{ course.title }}
+                                            </h2>
+                                        </div>
+                                        <img class="card-image" src="{% get_media_prefix %}{{ course.card_logo }}"
+                                             alt="Иконка курса">
+                                    </div>
+                                    <div class="card-bottom flex">
+                                        <div class="card-main-info flex">
+                                            <ul class="list-reset card-main-info-list flex">
+                                                <li class="main-info-item flex">
+                                                    <img src="{% get_media_prefix %}courses/rocket-icon.svg"
+                                                         alt="Rocket Icon"
+                                                         class="info-item-icon">
+                                                    <div class="info-item-desc">
+                                                        <p class="info-item-title">{{ course.start_ru }}</p>
+                                                        <p class="info-item-bottom-text">Начало занятий</p>
+                                                    </div>
+                                                </li>
+                                                <li class="main-info-item flex">
+                                                    <img src="{% get_media_prefix %}courses/clock-icon.svg"
+                                                         alt="Clock Icon"
+                                                         class="info-item-icon">
+                                                    <div class="info-item-desc">
+                                                        <p class="info-item-title">{{ course.duration }}</p>
+                                                        <p class="info-item-bottom-text">Длительность обучения</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-buy-section flex">
+                                            <div class="card-price flex">
+                                                <div class="month-price">
+                                                    {{ course.month_price }} ₽ / месяц
+                                                </div>
+                                                <div class="full-price">
+                                                    {{ course.full_price }} ₽ / весь курс
+                                                </div>
+                                            </div>
+                                            <form class="card-btn-form" method="get" action="{% url 'shop:course-detail' slug=course.slug %}">
+                                                <button type="submit" class="btn-reset card-btn">
+                                                    Подробнее о курсе
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                        {% elif course.card_type == 'sm' %}
+                            <li class="catalog-item item-small">
+                                <article class="course-card card-small">
+                                    <div class="card-top flex">
+                                        <div class="card-top-right">
+                                            {% if course.certificate %}
+                                                <div class="card-certificate">
+                                                    Сертификат по окончании
+                                                </div>
+                                            {% else %}
+                                                <div class="card-certificate">
+                                                    Без сертификата
+                                                </div>
+                                            {% endif %}
+                                            <h2 class="card-title">
+                                                {{ course.title }}
+                                            </h2>
+                                        </div>
+                                        {% if course.card_logo %}
+                                            <img class="card-image" src="{% get_media_prefix %}{{ course.card_logo }}"
+                                                 alt="Иконка курса">
+                                        {% else %}
+                                            <img class="card-image"
+                                                 src="{% get_media_prefix %}courses/default_logo_card_small.svg"
+                                                 alt="Иконка курса">
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-main-info">
+                                        <ul class="list-reset card-main-info-list flex">
+                                            <li class="main-info-item flex">
+                                                <img src="{% get_media_prefix %}courses/rocket-icon.svg"
+                                                     alt="Rocket Icon"
+                                                     class="info-item-icon">
+                                                <div class="info-item-desc">
+                                                    <p class="info-item-title">{{ course.start_ru }}</p>
+                                                    <p class="info-item-bottom-text">Начало занятий</p>
+                                                </div>
+                                            </li>
+                                            <li class="main-info-item flex">
+                                                <img src="{% get_media_prefix %}courses/clock-icon.svg" alt="Clock Icon"
+                                                     class="info-item-icon">
+                                                <div class="info-item-desc">
+                                                    <p class="info-item-title">{{ course.duration }}</p>
+                                                    <p class="info-item-bottom-text">Длительность обучения</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-buy-section">
+                                        <div class="card-price flex">
+                                            <div class="month-price">
+                                                {{ course.month_price }} ₽ / месяц
+                                            </div>
+                                            <div class="full-price">
+                                                {{ course.full_price }} ₽ / весь курс
+                                            </div>
+                                        </div>
+                                            <form class="card-btn-form" method="get" action="{% url 'shop:course-detail' slug=course.slug %}">
+                                                <button type="submit" class="btn-reset card-btn">
+                                                    Подробнее о курсе
+                                                </button>
+                                            </form>
+                                    </div>
+                                </article>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <div class="catalog-paginator flex">
+                    {% if paginator.num_pages > 1 %}
+                        <ul class="list-reset paginator-list flex">
+                            <li class="paginator-item">
+                                {% if page_obj.has_previous %}
+                                    <a href="?page={{ 1 }}" class="paginator-link first-active">
+                                        <img alt="Первая страница иконка активна"
+                                             src="{% get_media_prefix %}courses/paginator-first-black.svg">
+                                    </a>
+                                {% else %}
+                                    <a href="#" class="paginator-link first-disabled" disabled>
+                                        <img alt="Первая страница иконка неактивна"
+                                             src="{% get_media_prefix %}courses/paginator-first-disabled.svg">
+                                    </a>
+                                {% endif %}
+                            </li>
+                            {% for page in paginator.page_range %}
+                                {% if page_obj.number == page %}
+                                    <li class="paginator-item">
+                                        <a href="{% url 'shop:course-list' %}?page={{ page }}"
+                                           class="paginator-link link-active">
+                                            {{ page }}
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="paginator-item">
+                                        <a href="{% url 'shop:course-list' %}?page={{ page }}" class="paginator-link">
+                                            {{ page }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            <li class="paginator-item">
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ paginator.num_pages }}" class="paginator-link">
+                                        <img alt="Последняя страница иконка активна"
+                                             src="{% get_media_prefix %}courses/paginator-last-black.svg">
+                                    </a>
+                                {% else %}
+                                    <a href="#" class="paginator-link" disabled>
+                                        <img alt="Последняя страница иконка неактивна"
+                                             src="{% get_media_prefix %}courses/paginator-last-disabled.svg">
+                                    </a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer bg-dark">
+        <div class="container footer-container flex">
+            <a class="footer-logo flex" href="{% url 'shop:index' %}">
+                {% load static %}
+                <img src="{% get_media_prefix %}index-page/../../media/main/logo.svg" class="footer-logo-img"
+                     alt="marcus logo">
+                <div class="footer-logo-name"><span class="blue-text">/</span> marcus</div>
+            </a>
+            <nav class="footer-nav flex">
+                <ul class="list-reset flex">
+                    <li class="footer-list-item">
+                        <a href="#goal" class="footer-item-link">Цель</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#platform" class="footer-item-link">Платформа</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#teacher" class="footer-item-link">Преподаватель</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a href="#features" class="footer-item-link">Особенности</a>
+                    </li>
+                </ul>
+            </nav>
+            <form method="get" action="{{ platform_link }}" target="_blank">
+                <button class="btn btn-reset footer-btn">
+                    Попробовать платформу
+                </button>
+            </form>
+        </div>
+    </footer>
+{% endblock %}
